@@ -15,6 +15,7 @@ void print_info(Suite *suite) {
 
 int main() {
   Suite *suites[] = {test_create_matrix(),
+					test_eq_matrix(),
                      NULL};
 
   for (int i = 0; suites[i] != NULL; i++) {
