@@ -19,7 +19,7 @@ s21_matrix.a: s21_matrix.o
 clean:
 	rm -rf *.a *.o *.out *.html *.css *.gcno *.gcov *.gcda s21_test report
 test: clean
-	gcc $(FLAGS) $(COVERAGE) -o s21_test tests/s21_test.c tests/*/*.c functions/*/*.c $(LDFLAGS)
+	gcc $(FLAGS) $(COVERAGE) -o s21_test tests/s21_test.c tests/source/*.c s21_matrix.c $(LDFLAGS)
 	./s21_test
 add_coverage:
 	$(eval FLAGS += --coverage)
