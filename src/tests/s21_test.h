@@ -1,6 +1,10 @@
 #ifndef SRC_S21_TEST_H
 #define SRC_S21_TEST_H
 
+#define FOR(i_max, j_max) \
+	for (int i = 0; i < i_max; i++) \
+		for (int j = 0; j < j_max; j++) \
+
 #include <check.h>
 #include <stdio.h>
 #include <stdlib.h>

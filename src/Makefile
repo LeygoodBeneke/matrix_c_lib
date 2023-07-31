@@ -26,5 +26,5 @@ add_coverage:
 gcov_report: add_coverage test
 	./s21_test
 	gcov -b -l -p -c s21_*.gcno
-	gcovr -o gcov_report.html --html --html-details -g -k -r . --html --html-details --filter functions/
+	gcovr -o gcov_report.html --html --html-details -g -k -r . --html --html-details --filter s21_matrix.c
 	$(OPEN_CM) gcov_report.html

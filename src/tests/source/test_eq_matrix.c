@@ -1,6 +1,6 @@
 #include "../s21_test.h"
 
-START_TEST(create_matrix_1) {
+START_TEST(eq_matrix_1) {
 	matrix_t matrix = {};
 	int rows = 10, cols = 10;
 	int r_value = s21_create_matrix(rows, cols, &matrix);
@@ -11,7 +11,7 @@ START_TEST(create_matrix_1) {
 }
 END_TEST
 
-START_TEST(create_matrix_2) {
+START_TEST(eq_matrix_2) {
 	matrix_t matrix = {};
 	int r_value = s21_create_matrix(-3, 3, &matrix);
 	ck_assert_int_eq(r_value, 1);
@@ -19,7 +19,7 @@ START_TEST(create_matrix_2) {
 }
 END_TEST
 
-START_TEST(create_matrix_3) {
+START_TEST(eq_matrix_3) {
 	matrix_t matrix = {};
 	int r_value = s21_create_matrix(3, -3, &matrix);
 	ck_assert_int_eq(r_value, 1);
@@ -27,7 +27,7 @@ START_TEST(create_matrix_3) {
 }
 END_TEST
 
-START_TEST(create_matrix_4) {
+START_TEST(eq_matrix_4) {
 	matrix_t matrix = {};
 	int r_value = s21_create_matrix(-3, -3, &matrix);
 	ck_assert_int_eq(r_value, 1);
@@ -35,7 +35,7 @@ START_TEST(create_matrix_4) {
 }
 END_TEST
 
-START_TEST(create_matrix_5) {
+START_TEST(eq_matrix_5) {
 	matrix_t matrix = {};
 	int r_value = s21_create_matrix(0, 0, &matrix);
 	ck_assert_int_eq(r_value, 1);
@@ -43,7 +43,7 @@ START_TEST(create_matrix_5) {
 }
 END_TEST
 
-START_TEST(create_matrix_6) {
+START_TEST(eq_matrix_6) {
 	matrix_t matrix = {};
 	int rows = 50, cols = 50;
 	int r_value = s21_create_matrix(rows, cols, &matrix);
@@ -54,16 +54,16 @@ START_TEST(create_matrix_6) {
 }
 END_TEST
 
-Suite *test_create_matrix() {
-  Suite *s = suite_create("create_matrix");
-  TCase *tc = tcase_create("create_matrix_tcase");
+Suite *test_eq_matrix() {
+  Suite *s = suite_create("eq_matrix");
+  TCase *tc = tcase_create("eq_matrix_tcase");
 
-  tcase_add_test(tc, create_matrix_1);
-  tcase_add_test(tc, create_matrix_2);
-  tcase_add_test(tc, create_matrix_3);
-  tcase_add_test(tc, create_matrix_4);
-  tcase_add_test(tc, create_matrix_5);
-  tcase_add_test(tc, create_matrix_6);
+  tcase_add_test(tc, eq_matrix_1);
+  tcase_add_test(tc, eq_matrix_2);
+  tcase_add_test(tc, eq_matrix_3);
+  tcase_add_test(tc, eq_matrix_4);
+  tcase_add_test(tc, eq_matrix_5);
+  tcase_add_test(tc, eq_matrix_6);
 
   suite_add_tcase(s, tc);
   return s;
