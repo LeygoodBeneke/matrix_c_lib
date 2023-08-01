@@ -17,6 +17,13 @@ int main() {
   Suite *suites[] = {test_create_matrix(),
 					 test_eq_matrix(),
 				 	 test_sum_matrix(),
+				 	 test_sub_matrix(),
+				 	 test_mult_number(),
+				 	 test_mult_matrix(),
+                     test_transpose(),
+                     test_calc_complements(),
+                     test_determinant(),
+                     test_inverse_matrix(),
                      NULL};
 
   for (int i = 0; suites[i] != NULL; i++) {
