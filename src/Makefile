@@ -31,3 +31,5 @@ gcov_report: add_coverage test
 
 123
 	qewqe
+qwee
+	hahah
