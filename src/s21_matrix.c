@@ -199,9 +199,9 @@ int double_equal(double first, double second) {
 }
 
 int is_incorrect_matrix(matrix_t *A) {
-    int flag = A == NULL;
-    if (!flag) flag = A->rows <= 0 || A->columns <= 0; 
-    return flag;
+  int flag = A == NULL;
+  if (!flag) flag = A->rows <= 0 || A->columns <= 0;
+  return flag;
 }
 
 int is_matrix_size_equal(matrix_t *A, matrix_t *B) {

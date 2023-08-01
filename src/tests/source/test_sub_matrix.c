@@ -109,4 +109,3 @@ Suite *test_sub_matrix() {
   suite_add_tcase(s, tc);
   return s;
 }
-

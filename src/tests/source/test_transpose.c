@@ -86,4 +86,3 @@ Suite *test_transpose() {
   suite_add_tcase(s, tc);
   return s;
 }
-

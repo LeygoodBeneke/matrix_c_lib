@@ -127,4 +127,3 @@ Suite *test_calc_complements() {
   suite_add_tcase(s, tc);
   return s;
 }
-

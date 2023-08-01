@@ -163,8 +163,6 @@ Suite *test_mult_matrix() {
   tcase_add_test(tc, mult_matrix_test_3);
   tcase_add_test(tc, null_mult_mat);
 
-
   suite_add_tcase(s, tc);
   return s;
 }
-

@@ -81,4 +81,3 @@ Suite *test_inverse_matrix() {
   suite_add_tcase(s, tc);
   return s;
 }
-
