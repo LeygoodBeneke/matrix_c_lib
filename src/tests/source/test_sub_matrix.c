@@ -20,7 +20,6 @@ START_TEST(sub_test_1) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(sub_test_2) {
@@ -67,7 +66,6 @@ START_TEST(sub_test_2) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(sub_test_incorrect_matrix) {
@@ -85,7 +83,6 @@ START_TEST(sub_test_incorrect_matrix) {
   s21_remove_matrix(&A);
   s21_remove_matrix(&B);
 }
-
 END_TEST
 
 START_TEST(null_sub) {
@@ -95,8 +92,8 @@ START_TEST(null_sub) {
   int res = s21_sub_matrix(A, B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
-
 END_TEST
+
 Suite *test_sub_matrix() {
   Suite *s = suite_create("sub_matrix");
   TCase *tc = tcase_create("sub_matrix_tcase");

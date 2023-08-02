@@ -6,9 +6,7 @@ START_TEST(mult_number_test_1) {
   s21_create_matrix(1, 1, &R2);
 
   A.matrix[0][0] = 1.25;
-
   R2.matrix[0][0] = -5;
-
   s21_mult_number(&A, -4, &R);
 
   ck_assert(fabs(R.matrix[0][0] - R2.matrix[0][0]) < 1e-7);
@@ -16,7 +14,6 @@ START_TEST(mult_number_test_1) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(mult_number_test_2) {
@@ -51,7 +48,6 @@ START_TEST(mult_number_test_2) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(mult_number_test_3) {
@@ -74,9 +70,7 @@ START_TEST(mult_number_test_3) {
   R2.matrix[1][2] = 21;
 
   s21_mult_number(&A, 4, &R);
-
   ck_assert_int_eq(s21_eq_matrix(&R, &R2), SUCCESS);
-
   s21_remove_matrix(&A);
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
@@ -96,7 +90,7 @@ Suite *test_mult_number() {
   Suite *s = suite_create("mult_number");
   TCase *tc = tcase_create("mult_number_tcase");
 
-  tcase_add_test(tc, mult_number_test_1);  // mult_number
+  tcase_add_test(tc, mult_number_test_1);
   tcase_add_test(tc, mult_number_test_2);
   tcase_add_test(tc, mult_number_test_3);
   tcase_add_test(tc, null_mult_num);

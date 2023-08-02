@@ -33,7 +33,6 @@ START_TEST(test_normal) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&B);
 }
-
 END_TEST
 
 START_TEST(test_not_sqare) {
@@ -45,7 +44,6 @@ START_TEST(test_not_sqare) {
   s21_remove_matrix(&m);
   s21_remove_matrix(&result);
 }
-
 END_TEST
 
 START_TEST(null_inverse) {
@@ -54,7 +52,6 @@ START_TEST(null_inverse) {
   int res = s21_inverse_matrix(B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
-
 END_TEST
 
 START_TEST(zero_det) {
@@ -73,7 +70,7 @@ Suite *test_inverse_matrix() {
   Suite *s = suite_create("inverse_matrix");
   TCase *tc = tcase_create("inverse_matrix_tcase");
 
-  tcase_add_test(tc, test_normal);  // inverse
+  tcase_add_test(tc, test_normal);
   tcase_add_test(tc, test_not_sqare);
   tcase_add_test(tc, null_inverse);
   tcase_add_test(tc, zero_det);

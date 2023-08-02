@@ -82,9 +82,7 @@ START_TEST(compliment_test_not_square) {
 
   ck_assert_int_eq(code, CALCULATION_ERROR);
   s21_remove_matrix(&B);
-  // s21_remove_matrix(&R);
 }
-
 END_TEST
 
 START_TEST(compliment_test_1x1) {
@@ -103,7 +101,6 @@ START_TEST(compliment_test_1x1) {
   s21_remove_matrix(&B);
   s21_remove_matrix(&R);
 }
-
 END_TEST
 
 START_TEST(null_compliments) {
@@ -112,8 +109,8 @@ START_TEST(null_compliments) {
   int res = s21_calc_complements(B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
-
 END_TEST
+
 Suite *test_calc_complements() {
   Suite *s = suite_create("calc_complements");
   TCase *tc = tcase_create("calc_complements_tcase");

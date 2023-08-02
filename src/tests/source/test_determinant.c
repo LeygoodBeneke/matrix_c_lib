@@ -4,16 +4,12 @@ START_TEST(determinant_test_1) {
   matrix_t A;
   double B, R = 1.25;
   s21_create_matrix(1, 1, &A);
-
   A.matrix[0][0] = 1.25;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_2) {
@@ -36,7 +32,6 @@ START_TEST(determinant_test_2) {
 
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_3x3_1) {
@@ -55,12 +50,9 @@ START_TEST(determinant_test_3x3_1) {
   A.matrix[2][2] = -6;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_3x3_2) {
@@ -79,12 +71,9 @@ START_TEST(determinant_test_3x3_2) {
   A.matrix[2][2] = -6;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_3x3_3) {
@@ -103,12 +92,9 @@ START_TEST(determinant_test_3x3_3) {
   A.matrix[2][2] = -6;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_3x3_4) {
@@ -127,12 +113,9 @@ START_TEST(determinant_test_3x3_4) {
   A.matrix[2][2] = 5;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_4x4) {
@@ -158,12 +141,9 @@ START_TEST(determinant_test_4x4) {
   A.matrix[3][3] = -6;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_5x5) {
@@ -198,12 +178,9 @@ START_TEST(determinant_test_5x5) {
   A.matrix[4][4] = 8.25;
 
   s21_determinant(&A, &B);
-
   ck_assert(fabs(B - R) < 1e-7);
-
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_not_square) {
@@ -214,7 +191,6 @@ START_TEST(determinant_not_square) {
   ck_assert_int_eq(res, CALCULATION_ERROR);
   s21_remove_matrix(&A);
 }
-
 END_TEST
 
 START_TEST(determinant_test_4x4_2) {
@@ -242,7 +218,6 @@ START_TEST(determinant_test_4x4_2) {
   ck_assert_int_eq(number, 13608);
   s21_remove_matrix(&a);
 }
-
 END_TEST
 
 START_TEST(null_determinate) {
@@ -251,10 +226,8 @@ START_TEST(null_determinate) {
   int res = s21_determinant(B, &re);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
-
 END_TEST
 
-END_TEST
 Suite *test_determinant() {
   Suite *s = suite_create("determinant");
   TCase *tc = tcase_create("determinant_tcase");

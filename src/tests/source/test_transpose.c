@@ -78,7 +78,7 @@ Suite *test_transpose() {
   Suite *s = suite_create("transpose");
   TCase *tc = tcase_create("transpose_tcase");
 
-  tcase_add_test(tc, transpose_test_1);  // transpose
+  tcase_add_test(tc, transpose_test_1);
   tcase_add_test(tc, transpose_test_2);
   tcase_add_test(tc, transpose_incorrect);
   tcase_add_test(tc, null_transpose);

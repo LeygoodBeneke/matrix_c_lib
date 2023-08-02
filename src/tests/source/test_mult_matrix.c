@@ -52,7 +52,6 @@ START_TEST(mult_matrix_test_1) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(mult_matrix_test_2) {
@@ -93,7 +92,6 @@ START_TEST(mult_matrix_test_2) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(mult_matrix_test_3) {
@@ -132,7 +130,6 @@ START_TEST(mult_matrix_test_3) {
   R2.matrix[2][3] = 91;
 
   s21_mult_matrix(&A, &B, &R);
-
   ck_assert_int_eq(s21_eq_matrix(&R, &R2), SUCCESS);
 
   s21_remove_matrix(&A);
@@ -140,7 +137,6 @@ START_TEST(mult_matrix_test_3) {
   s21_remove_matrix(&R);
   s21_remove_matrix(&R2);
 }
-
 END_TEST
 
 START_TEST(null_mult_mat) {
@@ -156,7 +152,7 @@ Suite *test_mult_matrix() {
   Suite *s = suite_create("mult_matrix");
   TCase *tc = tcase_create("mult_matrix_tcase");
 
-  tcase_add_test(tc, incorrect_matrix_1);  // mult_matrix
+  tcase_add_test(tc, incorrect_matrix_1);
   tcase_add_test(tc, incorrect_matrix_2);
   tcase_add_test(tc, mult_matrix_test_1);
   tcase_add_test(tc, mult_matrix_test_2);
