@@ -110,12 +110,8 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
           s21_create_matrix(A->rows - 1, A->columns - 1, &tmp_matrix);
           for (int k = 0, m = 0; k < A->rows - 1; k++, m++) {
             for (int l = 0, n = 0; l < A->columns - 1; l++, n++) {
-              if (m == i) {
-                m++;
-              }
-              if (n == j) {
-                n++;
-              }
+              m += (m == i);
+              n += (n == j);
               tmp_matrix.matrix[k][l] = A->matrix[m][n];
             }
           }
@@ -150,9 +146,7 @@ int s21_determinant(matrix_t *A, double *result) {
         s21_create_matrix(A->rows - 1, A->columns - 1, &tmp_matrix);
         for (int i = 0; i < A->rows - 1; i++) {
           for (int j = 0, x = 0; j < A->columns - 1; j++, x++) {
-            if (x == k) {
-              x++;
-            }
+            x += (x == k);
             tmp_matrix.matrix[i][j] = A->matrix[i + 1][x];
           }
         }
