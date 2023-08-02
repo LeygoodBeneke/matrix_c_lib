@@ -131,16 +131,16 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
 }
 
 int s21_determinant(matrix_t *A, double *result) {
-  int error_code = 0;
+  int flag = 0;
 
   *result = 0;
-  error_code = is_incorrect_matrix(A);
-  if (error_code == 0) {
+  flag = is_incorrect_matrix(A);
+  if (flag == 0) {
     if (A->columns != A->rows) {
-      error_code = 2;
+      flag = 2;
     }
   }
-  if (error_code == 0) {
+  if (flag == 0) {
     if (A->columns == 1) {
       *result = A->matrix[0][0];
     } else {
@@ -163,19 +163,19 @@ int s21_determinant(matrix_t *A, double *result) {
     }
   }
 
-  return error_code;
+  return flag;
 }
 
 int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
-  int error_code = 0;
+  int flag = 0;
   double determinant = 0;
 
   if (A == NULL || A->rows < 1 || A->columns < 1) {
-    error_code = 1;
+    flag = 1;
   } else if (A->columns != A->rows) {
-    error_code = 2;
+    flag = 2;
   } else if (!s21_determinant(A, &determinant) && !determinant) {
-    error_code = 2;
+    flag = 2;
   } else {
     matrix_t complements, transpose;
     s21_calc_complements(A, &complements);
@@ -189,7 +189,7 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
     s21_remove_matrix(&complements);
     s21_remove_matrix(&transpose);
   }
-  return error_code;
+  return flag;
 }
 
 int double_equal(double first, double second) {
