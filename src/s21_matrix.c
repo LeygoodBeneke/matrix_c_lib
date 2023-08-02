@@ -93,12 +93,12 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
 
 int s21_calc_complements(matrix_t *A, matrix_t *result) {
   int flag = is_incorrect_matrix(A);
-  if (flag == 0) {
+  if (flag == OK) {
     if (A->columns != A->rows) {
       flag = CALCULATION_ERROR;
     }
   }
-  if (flag == 0) {
+  if (flag == OK) {
     s21_create_matrix(A->columns, A->rows, result);
     if (A->columns == 1) {
       result->matrix[0][0] = A->matrix[0][0];
@@ -129,12 +129,12 @@ int s21_calc_complements(matrix_t *A, matrix_t *result) {
 int s21_determinant(matrix_t *A, double *result) {
   int flag = is_incorrect_matrix(A);
   *result = 0;
-  if (flag == 0) {
+  if (flag == OK) {
     if (A->columns != A->rows) {
       flag = CALCULATION_ERROR;
     }
   }
-  if (flag == 0) {
+  if (flag == OK) {
     if (A->columns == 1) {
       *result = A->matrix[0][0];
     } else {
@@ -159,7 +159,7 @@ int s21_determinant(matrix_t *A, double *result) {
 }
 
 int s21_inverse_matrix(matrix_t *A, matrix_t *result) {
-  int flag = 0;
+  int flag = OK;
   double determinant = 0;
 
   if (is_incorrect_matrix(A)) {
