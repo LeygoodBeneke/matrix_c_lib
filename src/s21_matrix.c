@@ -36,7 +36,7 @@ int s21_eq_matrix(matrix_t *A, matrix_t *B) {
 
 int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
   int flag = is_incorrect_matrix(A) || is_incorrect_matrix(B);
-  if (flag == OK) flag = !is_matrix_size_equal(A, B) ? CALCULATION_ERROR : 0;
+  if (flag == OK) flag = is_matrix_size_equal(A, B) ? 0 : CALCULATION_ERROR;
   if (flag == OK) {
     s21_create_matrix(A->rows, A->columns, result);
     for (int i = 0; i < A->rows; i++)
@@ -86,7 +86,7 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
     s21_create_matrix(A->columns, A->rows, result);
     for (int i = 0; i < A->rows; i++)
       for (int j = 0; j < A->columns; j++)
-        result->matrix[j][i] += A->matrix[i][j];
+        result->matrix[j][i] = A->matrix[i][j];
   }
   return flag;
 }
@@ -94,7 +94,7 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
 int s21_calc_complements(matrix_t *A, matrix_t *result) {
   int error_code = 0;
 
-  error_code = !is_incorrect_matrix(A);
+  error_code = is_incorrect_matrix(A);
   if (error_code == 0) {
     if (A->columns != A->rows) {
       error_code = 2;
@@ -136,7 +136,7 @@ int s21_determinant(matrix_t *A, double *result) {
   int error_code = 0;
 
   *result = 0;
-  error_code = !is_incorrect_matrix(A);
+  error_code = is_incorrect_matrix(A);
   if (error_code == 0) {
     if (A->columns != A->rows) {
       error_code = 2;
@@ -148,7 +148,7 @@ int s21_determinant(matrix_t *A, double *result) {
     } else {
       for (int k = 0; k < A->columns; k++) {
         double tmp_result = 0;
-        matrix_t tmp_matrix;
+        matrix_t tmp_matrix = {};
         s21_create_matrix(A->rows - 1, A->columns - 1, &tmp_matrix);
         for (int i = 0; i < A->rows - 1; i++) {
           for (int j = 0, x = 0; j < A->columns - 1; j++, x++) {

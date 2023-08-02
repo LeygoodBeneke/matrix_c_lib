@@ -10,7 +10,7 @@ START_TEST(sum_matrix_1) {
     matrix_2.matrix[i][j] = i + j;
   }
   ck_assert_int_eq(r_value, 0);
-  ck_assert_int_eq(s21_sum_matrix(&matrix_1, &matrix_2, &result), 1);
+  ck_assert_int_eq(s21_sum_matrix(&matrix_1, &matrix_2, &result), 0);
   FOR(rows, cols) { ck_assert_int_eq(result.matrix[i][j], i + j + i + j); }
   s21_remove_matrix(&matrix_1);
   s21_remove_matrix(&matrix_2);
@@ -46,7 +46,8 @@ START_TEST(sum_matrix_3) {
     matrix_2.matrix[i][j] = i * j;
   }
   ck_assert_int_eq(r_value, 0);
-  ck_assert_int_eq(s21_sum_matrix(&matrix_1, &matrix_2, &result), 1);
+  ck_assert_int_eq(s21_sum_matrix(&matrix_1, &matrix_2, &result),
+                   CALCULATION_ERROR);
   s21_remove_matrix(&matrix_1);
   s21_remove_matrix(&matrix_2);
   s21_remove_matrix(&result);
