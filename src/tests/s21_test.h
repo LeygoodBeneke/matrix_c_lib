@@ -8,7 +8,6 @@
 #include <check.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "../s21_matrix.h"
 
 Suite *test_create_matrix();

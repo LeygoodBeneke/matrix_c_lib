@@ -198,12 +198,12 @@ int double_equal(double first, double second) {
   return fabs(first - second) <= 1e-7;
 }
 
-int is_incorrect_matrix(matrix_t *A) {
+int is_incorrect_matrix(const matrix_t *A) {
   int flag = A == NULL;
   if (!flag) flag = A->rows <= 0 || A->columns <= 0;
   return flag;
 }
 
-int is_matrix_size_equal(matrix_t *A, matrix_t *B) {
+int is_matrix_size_equal(const matrix_t *A, const matrix_t *B) {
   return (A->columns == B->columns) && (A->rows == B->rows);
 }

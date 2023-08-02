@@ -26,5 +26,5 @@ int s21_determinant(matrix_t *A, double *result);
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
 int double_equal(double first, double second);
-int is_incorrect_matrix(matrix_t *A);
-int is_matrix_size_equal(matrix_t *A, matrix_t *B);
+int is_incorrect_matrix(const matrix_t *A);
+int is_matrix_size_equal(const matrix_t *A, const matrix_t *B);
