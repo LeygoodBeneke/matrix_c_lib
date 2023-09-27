@@ -1,9 +1,9 @@
-#include "../s21_test.h"
+#include "../proj_test.h"
 
 START_TEST(test_normal) {
   matrix_t m, B, R;
-  s21_create_matrix(3, 3, &m);
-  s21_create_matrix(3, 3, &B);
+  proj_create_matrix(3, 3, &m);
+  proj_create_matrix(3, 3, &B);
 
   m.matrix[0][0] = 2;
   m.matrix[0][1] = 5;
@@ -25,31 +25,31 @@ START_TEST(test_normal) {
   B.matrix[2][1] = -29;
   B.matrix[2][2] = 24;
 
-  int code = s21_inverse_matrix(&m, &R);
+  int code = proj_inverse_matrix(&m, &R);
 
-  ck_assert_int_eq(s21_eq_matrix(&R, &B), SUCCESS);
+  ck_assert_int_eq(proj_eq_matrix(&R, &B), SUCCESS);
   ck_assert_int_eq(code, OK);
-  s21_remove_matrix(&m);
-  s21_remove_matrix(&R);
-  s21_remove_matrix(&B);
+  proj_remove_matrix(&m);
+  proj_remove_matrix(&R);
+  proj_remove_matrix(&B);
 }
 END_TEST
 
 START_TEST(test_not_sqare) {
   matrix_t m = {0};
   matrix_t result = {0};
-  s21_create_matrix(1, 4, &m);
-  int code = s21_inverse_matrix(&m, &result);
+  proj_create_matrix(1, 4, &m);
+  int code = proj_inverse_matrix(&m, &result);
   ck_assert_int_eq(code, CALCULATION_ERROR);
-  s21_remove_matrix(&m);
-  s21_remove_matrix(&result);
+  proj_remove_matrix(&m);
+  proj_remove_matrix(&result);
 }
 END_TEST
 
 START_TEST(null_inverse) {
   matrix_t *B = NULL;
   matrix_t *R = NULL;
-  int res = s21_inverse_matrix(B, R);
+  int res = proj_inverse_matrix(B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
 END_TEST
@@ -57,12 +57,12 @@ END_TEST
 START_TEST(zero_det) {
   matrix_t m = {0};
   matrix_t result = {0};
-  s21_create_matrix(3, 3, &m);
+  proj_create_matrix(3, 3, &m);
 
-  int code = s21_inverse_matrix(&m, &result);
+  int code = proj_inverse_matrix(&m, &result);
   ck_assert_int_eq(code, CALCULATION_ERROR);
-  s21_remove_matrix(&m);
-  s21_remove_matrix(&result);
+  proj_remove_matrix(&m);
+  proj_remove_matrix(&result);
 }
 END_TEST
 

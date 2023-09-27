@@ -8,7 +8,7 @@
 #include <check.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../s21_matrix.h"
+#include "../proj_matrix.h"
 
 Suite *test_create_matrix();
 Suite *test_remove_matrix();

@@ -1,9 +1,9 @@
-#include "../s21_test.h"
+#include "../proj_test.h"
 
 START_TEST(compliment_test_1) {
   matrix_t A, B, R;
-  s21_create_matrix(3, 3, &B);
-  s21_create_matrix(3, 3, &A);
+  proj_create_matrix(3, 3, &B);
+  proj_create_matrix(3, 3, &A);
   B.matrix[0][0] = 1;
   B.matrix[0][1] = 2;
   B.matrix[0][2] = 3;
@@ -24,19 +24,19 @@ START_TEST(compliment_test_1) {
   A.matrix[2][1] = -2;
   A.matrix[2][2] = 4;
 
-  int code = s21_calc_complements(&B, &R);
-  ck_assert_int_eq(s21_eq_matrix(&R, &A), SUCCESS);
+  int code = proj_calc_complements(&B, &R);
+  ck_assert_int_eq(proj_eq_matrix(&R, &A), SUCCESS);
   ck_assert_int_eq(code, OK);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
-  s21_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
+  proj_remove_matrix(&A);
 }
 END_TEST
 
 START_TEST(compliment_test_2) {
   matrix_t A, B, R;
-  s21_create_matrix(3, 3, &A);
-  s21_create_matrix(3, 3, &B);
+  proj_create_matrix(3, 3, &A);
+  proj_create_matrix(3, 3, &B);
 
   A.matrix[0][0] = 5;
   A.matrix[0][1] = -1;
@@ -48,7 +48,7 @@ START_TEST(compliment_test_2) {
   A.matrix[2][1] = 0;
   A.matrix[2][2] = 3;
 
-  s21_calc_complements(&A, &R);
+  proj_calc_complements(&A, &R);
 
   B.matrix[0][0] = 9;
   B.matrix[0][1] = -2;
@@ -60,16 +60,16 @@ START_TEST(compliment_test_2) {
   B.matrix[2][1] = -18;
   B.matrix[2][2] = 17;
 
-  ck_assert_int_eq(s21_eq_matrix(&R, &B), SUCCESS);
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
+  ck_assert_int_eq(proj_eq_matrix(&R, &B), SUCCESS);
+  proj_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
 }
 END_TEST
 
 START_TEST(compliment_test_not_square) {
   matrix_t B, R;
-  s21_create_matrix(2, 3, &B);
+  proj_create_matrix(2, 3, &B);
 
   B.matrix[0][0] = 1;
   B.matrix[0][1] = 2;
@@ -78,35 +78,35 @@ START_TEST(compliment_test_not_square) {
   B.matrix[1][1] = 4;
   B.matrix[1][2] = 2;
 
-  int code = s21_calc_complements(&B, &R);
+  int code = proj_calc_complements(&B, &R);
 
   ck_assert_int_eq(code, CALCULATION_ERROR);
-  s21_remove_matrix(&B);
+  proj_remove_matrix(&B);
 }
 END_TEST
 
 START_TEST(compliment_test_1x1) {
   matrix_t A, B, R;
-  s21_create_matrix(1, 1, &A);
-  s21_create_matrix(1, 1, &B);
+  proj_create_matrix(1, 1, &A);
+  proj_create_matrix(1, 1, &B);
 
   A.matrix[0][0] = 5;
 
-  s21_calc_complements(&A, &R);
+  proj_calc_complements(&A, &R);
 
   B.matrix[0][0] = 5;
 
-  ck_assert_int_eq(s21_eq_matrix(&R, &B), SUCCESS);
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
+  ck_assert_int_eq(proj_eq_matrix(&R, &B), SUCCESS);
+  proj_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
 }
 END_TEST
 
 START_TEST(null_compliments) {
   matrix_t *B = NULL;
   matrix_t *R = NULL;
-  int res = s21_calc_complements(B, R);
+  int res = proj_calc_complements(B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
 END_TEST

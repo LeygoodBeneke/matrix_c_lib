@@ -10,21 +10,21 @@ ifeq ($(UNAME),Darwin)
 	OPEN_CM=open
 endif
 
-all: clean s21_matrix.a
+all: clean proj_matrix.a
 deafult: all
-s21_matrix.o: *.c
+proj_matrix.o: *.c
 	gcc $(FLAGS) -c $^
-s21_matrix.a: s21_matrix.o
-	ar cr s21_matrix.a *.o
+proj_matrix.a: proj_matrix.o
+	ar cr proj_matrix.a *.o
 clean:
-	rm -rf *.a *.o *.out *.html *.css *.gcno *.gcov *.gcda s21_test report
-test: clean s21_matrix.a
-	gcc $(FLAGS) $(COVERAGE) -o s21_test tests/s21_test.c tests/source/*.c s21_matrix.a $(LDFLAGS)
-	./s21_test
+	rm -rf *.a *.o *.out *.html *.css *.gcno *.gcov *.gcda proj_test report
+test: clean proj_matrix.a
+	gcc $(FLAGS) $(COVERAGE) -o proj_test tests/proj_test.c tests/source/*.c proj_matrix.a $(LDFLAGS)
+	./proj_test
 add_coverage:
 	$(eval FLAGS += --coverage)
 gcov_report: add_coverage test
-	./s21_test
-	gcov -b -l -p -c s21_*.gcno
-	gcovr -o gcov_report.html --html --html-details -g -k -r . --html --html-details --filter s21_matrix.c
+	./proj_test
+	gcov -b -l -p -c proj_*.gcno
+	gcovr -o gcov_report.html --html --html-details -g -k -r . --html --html-details --filter proj_matrix.c
 	$(OPEN_CM) gcov_report.html

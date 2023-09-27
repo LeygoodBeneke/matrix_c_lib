@@ -1,64 +1,64 @@
-#include "../s21_test.h"
+#include "../proj_test.h"
 
 START_TEST(incorrect_matrix_1) {
   matrix_t m1 = {0};
   matrix_t m2 = {0};
-  s21_create_matrix(5, 5, &m1);
-  s21_create_matrix(6, 6, &m2);
+  proj_create_matrix(5, 5, &m1);
+  proj_create_matrix(6, 6, &m2);
 
   matrix_t result = {0};
-  int mul_code = s21_mult_matrix(&m1, &m2, &result);
+  int mul_code = proj_mult_matrix(&m1, &m2, &result);
   ck_assert_int_eq(mul_code, CALCULATION_ERROR);
 
-  s21_remove_matrix(&m1);
-  s21_remove_matrix(&m2);
-  s21_remove_matrix(&result);
+  proj_remove_matrix(&m1);
+  proj_remove_matrix(&m2);
+  proj_remove_matrix(&result);
 }
 END_TEST
 
 START_TEST(incorrect_matrix_2) {
   matrix_t m1 = {0};
   matrix_t m2 = {0};
-  s21_create_matrix(5, 5, &m1);
-  s21_create_matrix(6, 6, &m2);
+  proj_create_matrix(5, 5, &m1);
+  proj_create_matrix(6, 6, &m2);
   m1.columns = -100;
 
   matrix_t result = {0};
-  int mul_code = s21_mult_matrix(&m1, &m2, &result);
+  int mul_code = proj_mult_matrix(&m1, &m2, &result);
   ck_assert_int_eq(mul_code, INCORRECT_MATRIX);
 
-  s21_remove_matrix(&m1);
-  s21_remove_matrix(&m2);
-  s21_remove_matrix(&result);
+  proj_remove_matrix(&m1);
+  proj_remove_matrix(&m2);
+  proj_remove_matrix(&result);
 }
 END_TEST
 
 START_TEST(mult_matrix_test_1) {
   matrix_t A, B, R, R2;
-  s21_create_matrix(1, 1, &A);
-  s21_create_matrix(1, 1, &B);
-  s21_create_matrix(1, 1, &R2);
+  proj_create_matrix(1, 1, &A);
+  proj_create_matrix(1, 1, &B);
+  proj_create_matrix(1, 1, &R2);
 
   A.matrix[0][0] = -1;
   B.matrix[0][0] = 2;
 
   R2.matrix[0][0] = -2;
 
-  s21_mult_matrix(&A, &B, &R);
+  proj_mult_matrix(&A, &B, &R);
 
   ck_assert(fabs(R.matrix[0][0] - R2.matrix[0][0]) < 1e-7);
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
-  s21_remove_matrix(&R2);
+  proj_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
+  proj_remove_matrix(&R2);
 }
 END_TEST
 
 START_TEST(mult_matrix_test_2) {
   matrix_t A, B, R, R2;
-  s21_create_matrix(3, 2, &A);
-  s21_create_matrix(2, 3, &B);
-  s21_create_matrix(3, 3, &R2);
+  proj_create_matrix(3, 2, &A);
+  proj_create_matrix(2, 3, &B);
+  proj_create_matrix(3, 3, &R2);
 
   A.matrix[0][0] = 0;
   A.matrix[0][1] = 1;
@@ -84,21 +84,21 @@ START_TEST(mult_matrix_test_2) {
   R2.matrix[2][1] = 83;
   R2.matrix[2][2] = 70;
 
-  s21_mult_matrix(&A, &B, &R);
+  proj_mult_matrix(&A, &B, &R);
 
-  ck_assert_int_eq(s21_eq_matrix(&R, &R2), SUCCESS);
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
-  s21_remove_matrix(&R2);
+  ck_assert_int_eq(proj_eq_matrix(&R, &R2), SUCCESS);
+  proj_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
+  proj_remove_matrix(&R2);
 }
 END_TEST
 
 START_TEST(mult_matrix_test_3) {
   matrix_t A, B, R, R2;
-  s21_create_matrix(3, 2, &A);
-  s21_create_matrix(2, 4, &B);
-  s21_create_matrix(3, 4, &R2);
+  proj_create_matrix(3, 2, &A);
+  proj_create_matrix(2, 4, &B);
+  proj_create_matrix(3, 4, &R2);
 
   A.matrix[0][0] = 0;
   A.matrix[0][1] = 1;
@@ -129,13 +129,13 @@ START_TEST(mult_matrix_test_3) {
   R2.matrix[2][2] = 70;
   R2.matrix[2][3] = 91;
 
-  s21_mult_matrix(&A, &B, &R);
-  ck_assert_int_eq(s21_eq_matrix(&R, &R2), SUCCESS);
+  proj_mult_matrix(&A, &B, &R);
+  ck_assert_int_eq(proj_eq_matrix(&R, &R2), SUCCESS);
 
-  s21_remove_matrix(&A);
-  s21_remove_matrix(&B);
-  s21_remove_matrix(&R);
-  s21_remove_matrix(&R2);
+  proj_remove_matrix(&A);
+  proj_remove_matrix(&B);
+  proj_remove_matrix(&R);
+  proj_remove_matrix(&R2);
 }
 END_TEST
 
@@ -143,7 +143,7 @@ START_TEST(null_mult_mat) {
   matrix_t *A = NULL;
   matrix_t *B = NULL;
   matrix_t *R = NULL;
-  int res = s21_mult_matrix(A, B, R);
+  int res = proj_mult_matrix(A, B, R);
   ck_assert_int_eq(res, INCORRECT_MATRIX);
 }
 

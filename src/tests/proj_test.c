@@ -1,4 +1,4 @@
-#include "s21_test.h"
+#include "proj_test.h"
 
 void print_info(Suite *suite) {
   SRunner *srunner = srunner_create(suite);
